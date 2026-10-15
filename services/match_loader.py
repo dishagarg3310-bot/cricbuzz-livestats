@@ -17,7 +17,7 @@ def _match_infos(data: dict) -> list:
     infos = []
     for item in data.get("matchDetails", []):
         for entry in item.get("matchDetailsMap", {}).get("match", []):
-            if "matchInfo" in entry:
+            if "matchInfo" in entry and "warm" not in str(entry["matchInfo"].get("matchDesc", "")).lower():
                 infos.append(entry["matchInfo"])
     return infos
 
@@ -104,6 +104,9 @@ def load_series_matches(engine: Engine, data: dict) -> dict:
 
 
 if __name__ == "__main__":
+    import sys
+
     logging.basicConfig(level=logging.INFO)
-    result = load_series_matches(get_engine(), CricbuzzClient().series_matches(11902))
+    series_id = int(sys.argv[1]) if len(sys.argv) > 1 else 11902
+    result = load_series_matches(get_engine(), CricbuzzClient().series_matches(series_id))
     print(result)
