@@ -85,3 +85,17 @@ def parse_dismissal_type(outdec: str) -> str:
 def parse_height_cm(text: str) -> Optional[int]:
     """'5 ft 9 in (175 cm) ' -> 175."""
     match = re.search(r"\((\d+)\s*cm\)", text or "")
+ROLE_MAP = {
+    "batsman": "Batsman",
+    "bowler": "Bowler",
+    "wk-batsman": "Wicket-keeper",
+    "wicketkeeper": "Wicket-keeper",
+    "batting allrounder": "All-rounder",
+    "bowling allrounder": "All-rounder",
+    "allrounder": "All-rounder",
+}
+
+
+def map_role(role) -> Optional[str]:
+    """API role text -> one of the 4 roles the database allows. Unknown -> None (NULL)."""
+    return ROLE_MAP.get(str(role or "").strip().lower())
