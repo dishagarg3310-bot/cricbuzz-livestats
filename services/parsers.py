@@ -61,7 +61,9 @@ def parse_result(status: str) -> tuple:
 def parse_dismissal_type(outdec: str) -> str:
     """Classify a dismissal text like 'c Hope b Joseph' for the catches/stumpings queries."""
     text = (outdec or "").strip().lower()
-    if not text or text == "not out" or text == "batting":
+    if not text:
+        return "did_not_bat"
+    if text in ("not out", "batting"):
         return "not_out"
     if text.startswith("c & b") or text.startswith("c and b"):
         return "caught_and_bowled"
