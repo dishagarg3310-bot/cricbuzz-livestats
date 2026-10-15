@@ -1,0 +1,144 @@
+{
+  "typeMatches": [
+    {
+      "matchType": "League",
+      "seriesMatches": [
+        {
+          "seriesAdWrapper": {
+            "seriesId": 13180,
+            "seriesName": "CSA T20 Challenge 2026",
+            "matches": [
+              {
+                "matchInfo": {
+                  "matchId": 173367,
+                  "seriesId": 13180,
+                  "seriesName": "CSA T20 Challenge 2026",
+                  "matchDesc": "Pool B",
+                  "matchFormat": "T20",
+                  "startDate": "1791993600000",
+                  "endDate": "1792006200000",
+                  "state": "Complete",
+                  "status": "Eastern Storm won by 18 runs",
+                  "team1": {
+                    "teamId": 933,
+                    "teamName": "Eastern Storm",
+                    "teamSName": "ESTORM",
+                    "imageId": 248407
+                  },
+                  "team2": {
+                    "teamId": 281,
+                    "teamName": "Knights",
+                    "teamSName": "KNG",
+                    "imageId": 172331
+                  },
+                  "venueInfo": {
+                    "id": 72,
+                    "ground": "Mangaung Oval",
+                    "city": "Bloemfontein",
+                    "timezone": "+02:00",
+                    "latitude": "-29.116752",
+                    "longitude": "26.20519"
+                  },
+                  "currBatTeamId": 933,
+                  "seriesStartDt": "1790294400000",
+                  "seriesEndDt": "1794787200000",
+                  "isTimeAnnounced": true,
+                  "stateTitle": "ESTORM Won",
+                  "hideScoreStatus": "Match completed"
+                },
+                "matchScore": {
+                  "team1Score": {
+                    "inngs1": {
+                      "inningsId": 1,
+                      "runs": 186,
+                      "wickets": 6,
+                      "overs": 19.6
+                    }
+                  },
+                  "team2Score": {
+                    "inngs1": {
+                      "inningsId": 2,
+                      "runs": 168,
+                      "wickets": 8,
+                      "overs": 19.6
+                    }
+                  }
+                }
+              },
+              {
+                "matchInfo": {
+                  "matchId": 173351,
+                  "seriesId": 13180,
+                  "seriesName": "CSA T20 Challenge 2026",
+                  "matchDesc": "Pool B",
+                  "matchFormat": "T20",
+                  "startDate": "1791993600000",
+                  "endDate": "1792006200000",
+                  "state": "Complete",
+                  "status": "Western Province won by 6 wkts",
+                  "team1": {
+                    "teamId": 1759,
+                    "teamName": "Boland",
+                    "teamSName": "BOL",
+                    "imageId": 349610
+                  },
+                  "team2": {
+                    "teamId": 917,
+                    "teamName": "Western Province",
+                    "teamSName": "WPR",
+                    "imageId": 1082447
+                  },
+                  "venueInfo": {
+                    "id": 52,
+                    "ground": "Newlands",
+                    "city": "Cape Town",
+                    "timezone": "+02:00",
+                    "latitude": "-33.979629",
+                    "longitude": "18.459466"
+                  },
+                  "currBatTeamId": 917,
+                  "seriesStartDt": "1790294400000",
+                  "seriesEndDt": "1794787200000",
+                  "isTimeAnnounced": true,
+                  "stateTitle": "Complete",
+                  "hideScoreStatus": "Match completed"
+                },
+                "matchScore": {
+                  "team1Score": {
+                    "inngs1": {
+                      "inningsId": 1,
+                      "runs": 174,
+                      "wickets": 7,
+                      "overs": 19.6
+                    }
+                  },
+                  "team2Score": {
+                    "inngs1": {
+                      "inningsId": 2,
+                      "runs": 175,
+                      "wickets": 4,
+                      "overs": 19.5
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "filters": {
+    "matchType": [
+      "International",
+      "League",
+      "Domestic",
+      "Women"
+    ]
+  },
+  "appIndex": {
+    "seoTitle": "Live Cricket Score - Scorecard and Match Results",
+    "webURL": "www.cricbuzz.com/live-cricket-scores/"
+  },
+  "responseLastUpdated": "1792032119"
+}
