@@ -45,9 +45,9 @@ class CricbuzzClient:
         name = path.strip("/").replace("/", "_").replace("?", "_") + ".json"
         return RAW_DIR / name
 
-    def get(self, path: str) -> dict:
+    def get(self, path: str, refresh: bool = False) -> dict:
         cache_file = self._cache_file(path)
-        if self.use_cache and cache_file.exists():
+        if self.use_cache and not refresh and cache_file.exists():
             logger.info("Cache hit: %s", cache_file)
             return json.loads(cache_file.read_text(encoding="utf-8"))
 
@@ -65,7 +65,7 @@ class CricbuzzClient:
             raise CricbuzzAPIError(f"Invalid JSON for {path}") from exc
 
         remaining = resp.headers.get("x-ratelimit-requests-remaining")
-        logger.info("API call %s, remaining this month: %s", path, remaining)
+        self.last_remaining = int(remaining) if remaining and remaining.isdigit() else None
 
         RAW_DIR.mkdir(parents=True, exist_ok=True)
         cache_file.write_text(json.dumps(data, indent=2), encoding="utf-8")
@@ -91,3 +91,5 @@ class CricbuzzClient:
 
     def player_bowling(self, player_id: int) -> dict:
         return self.get(f"/stats/v1/player/{player_id}/bowling")
+    def live_matches(self, refresh: bool = False) -> dict:
+        return self.get("/matches/v1/live", refresh=refresh)
