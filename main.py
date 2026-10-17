@@ -1,6 +1,6 @@
 import streamlit as st
 from sqlalchemy.exc import SQLAlchemyError
-
+from utils.ui import show_db_error
 from services import dashboard_service as ds
 
 st.set_page_config(page_title="Cricbuzz LiveStats", page_icon="🏏", layout="wide")
@@ -11,9 +11,8 @@ st.caption("Cricket data from the Cricbuzz API, stored in MySQL and analysed wit
 try:
     counts = ds.get_counts()
     results = ds.get_recent_results(10)
-except SQLAlchemyError:
-    st.error("Could not read the database. Check that MySQL is running and .env is correct.")
-    st.stop()
+except SQLAlchemyError as exc:
+    show_db_error(exc)
 
 cols = st.columns(5)
 cols[0].metric("Series", counts["series"])
