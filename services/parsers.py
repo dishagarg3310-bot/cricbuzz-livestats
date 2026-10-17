@@ -85,6 +85,9 @@ def parse_dismissal_type(outdec: str) -> str:
 def parse_height_cm(text: str) -> Optional[int]:
     """'5 ft 9 in (175 cm) ' -> 175."""
     match = re.search(r"\((\d+)\s*cm\)", text or "")
+    return int(match.group(1)) if match else None
+
+
 ROLE_MAP = {
     "batsman": "Batsman",
     "bowler": "Bowler",
