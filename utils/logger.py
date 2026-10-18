@@ -7,23 +7,26 @@ LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 
 
 def setup_logging(level: int = logging.INFO) -> None:
-    """Send logs to the console and to logs/app.log. Safe to call many times."""
+    """Log to the console, and to logs/app.log when the folder is writable."""
     root = logging.getLogger()
     if getattr(root, "_livestats_ready", False):
         return
 
-    LOG_DIR.mkdir(exist_ok=True)
     formatter = logging.Formatter(LOG_FORMAT)
-
-    file_handler = RotatingFileHandler(
-        LOG_DIR / "app.log", maxBytes=1_000_000, backupCount=3, encoding="utf-8"
-    )
-    file_handler.setFormatter(formatter)
+    root.setLevel(level)
 
     console = logging.StreamHandler()
     console.setFormatter(formatter)
-
-    root.setLevel(level)
-    root.addHandler(file_handler)
     root.addHandler(console)
+
+    try:
+        LOG_DIR.mkdir(exist_ok=True)
+        file_handler = RotatingFileHandler(
+            LOG_DIR / "app.log", maxBytes=1_000_000, backupCount=3, encoding="utf-8"
+        )
+        file_handler.setFormatter(formatter)
+        root.addHandler(file_handler)
+    except OSError:
+        root.warning("Could not write logs/app.log, logging to the console only.")
+
     root._livestats_ready = True
